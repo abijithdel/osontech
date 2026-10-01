@@ -1,0 +1,225 @@
+/* ── Section Shell ─────────────────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #050508;
+}
+
+.bgGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(255, 51, 75, 0.055) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 96px 32px 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff334b;
+  padding: 6px 18px;
+  border-radius: 100px;
+  background: rgba(255, 51, 75, 0.1);
+  border: 1px solid rgba(255, 51, 75, 0.25);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.highlight {
+  color: #ff334b;
+  text-shadow: 0 0 30px rgba(255, 51, 75, 0.45);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(212, 212, 216, 0.65);
+  margin: 0;
+}
+
+.contactLink {
+  color: #ff334b;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.contactLink:hover {
+  opacity: 0.75;
+}
+
+/* ── Accordion ─────────────────────────────────────────────── */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* ── Item ──────────────────────────────────────────────────── */
+.item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item:hover {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.itemOpen {
+  border-color: rgba(255, 51, 75, 0.35) !important;
+  background: rgba(255, 51, 75, 0.04) !important;
+  box-shadow: 0 8px 40px rgba(255, 51, 75, 0.08);
+}
+
+/* ── Question Button ───────────────────────────────────────── */
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+
+.questionNumber {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: rgba(255, 51, 75, 0.6);
+  flex-shrink: 0;
+  font-family: 'Inter', monospace, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.itemOpen .questionNumber {
+  color: #ff334b;
+}
+
+.questionText {
+  flex: 1;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.45;
+  transition: color 0.25s ease;
+}
+
+.itemOpen .questionText {
+  color: #ffffff;
+}
+
+/* ── Chevron ───────────────────────────────────────────────── */
+.chevron {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.35s ease;
+}
+
+.itemOpen .chevron {
+  background: rgba(255, 51, 75, 0.15);
+  border-color: rgba(255, 51, 75, 0.3);
+  color: #ff334b;
+  transform: rotate(180deg);
+}
+
+/* ── Answer ────────────────────────────────────────────────── */
+.answerWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.itemOpen .answerWrapper {
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.answer {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(212, 212, 216, 0.7);
+  padding: 0 28px 24px 64px;
+  margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .inner {
+    padding: 64px 20px 80px;
+    gap: 48px;
+  }
+
+  .question {
+    padding: 20px 20px;
+    gap: 14px;
+  }
+
+  .answer {
+    padding: 0 20px 20px 20px;
+  }
+
+  .questionNumber {
+    display: none;
+  }
+
+  .questionText {
+    font-size: 0.95rem;
+  }
+}

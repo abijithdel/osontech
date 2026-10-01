@@ -1,0 +1,137 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Sizes */
+.sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+.md {
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+.lg {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+}
+
+/* Primary - White sleek dark shade accent */
+.primary {
+  color: #000000;
+  background: #ffffff;
+  border-color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+}
+
+.primary:hover {
+  background: #f4f4f5;
+  border-color: #f4f4f5;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(255, 255, 255, 0.4);
+}
+
+.primary:active {
+  transform: translateY(-1px);
+}
+
+/* Secondary - Obsidian Dark Glassmorphism */
+.secondary {
+  color: #ffffff;
+  background: rgba(18, 18, 24, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.secondary:hover {
+  background: rgba(35, 35, 45, 0.85);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+}
+
+.secondary:active {
+  transform: translateY(0);
+}
+
+/* Header CTA - Sleek Navbar Button */
+.headerCta {
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.headerCta:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Dark Shade Accent Button - Deep Crimson Glow */
+.darkShade {
+  color: #ffffff;
+  background: linear-gradient(135deg, #181824 0%, #0d0d14 100%);
+  border: 1px solid rgba(255, 51, 75, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 51, 75, 0.15);
+}
+
+.darkShade:hover {
+  background: linear-gradient(135deg, #242436 0%, #151522 100%);
+  border-color: rgba(255, 51, 75, 0.8);
+  box-shadow: 0 12px 35px rgba(255, 51, 75, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Outline Glass */
+.outline {
+  color: #e4e4e7;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Icons */
+.buttonIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .arrowIcon {
+  transform: translateX(4px);
+}

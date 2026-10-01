@@ -1,0 +1,281 @@
+/* ── Footer Shell ──────────────────────────────────────────── */
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: #050508;
+  overflow: hidden;
+}
+
+/* Subtle gradient top border */
+.topBorder {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 51, 75, 0.4) 30%,
+    rgba(255, 51, 75, 0.6) 50%,
+    rgba(255, 51, 75, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+.inner {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 72px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── Main Row ──────────────────────────────────────────────── */
+.mainRow {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Brand Column ──────────────────────────────────────────── */
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.logoText {
+  color: #ffffff;
+}
+
+.logoAccent {
+  color: #ff334b;
+  text-shadow: 0 0 20px rgba(255, 51, 75, 0.45);
+}
+
+.brandDesc {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(212, 212, 216, 0.5);
+  margin: 0;
+  max-width: 300px;
+}
+
+/* ── Social Buttons ────────────────────────────────────────── */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.socialBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.2s ease, box-shadow 0.22s ease;
+}
+
+.socialBtn:hover {
+  background: rgba(255, 51, 75, 0.12);
+  border-color: rgba(255, 51, 75, 0.35);
+  color: #ff334b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 51, 75, 0.2);
+}
+
+/* ── Email Pill ────────────────────────────────────────────── */
+.emailPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 100px;
+  background: rgba(255, 51, 75, 0.07);
+  border: 1px solid rgba(255, 51, 75, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.emailPill:hover {
+  background: rgba(255, 51, 75, 0.14);
+  border-color: rgba(255, 51, 75, 0.4);
+  color: #ff334b;
+}
+
+.emailPill svg {
+  color: #ff334b;
+  flex-shrink: 0;
+}
+
+/* ── Nav Column ────────────────────────────────────────────── */
+.navCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.navHeading {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLink {
+  font-size: 0.88rem;
+  color: rgba(212, 212, 216, 0.5);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Bottom Row ────────────────────────────────────────────── */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.copyrightBrand {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+/* ── Meta Links ────────────────────────────────────────────── */
+.metaLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaLink {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.28);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.metaLink:hover {
+  color: #ff334b;
+}
+
+.metaDot {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mainRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .brandDesc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding: 56px 20px 32px;
+    gap: 36px;
+  }
+
+  .mainRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .brandCol {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mainRow {
+    grid-template-columns: 1fr;
+  }
+}

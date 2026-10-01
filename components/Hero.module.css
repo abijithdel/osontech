@@ -1,0 +1,263 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #050508;
+}
+
+.heroBgWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heroBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.08) brightness(0.85);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(5, 5, 8, 0.45) 0%, rgba(5, 5, 8, 0.88) 75%, #050508 100%),
+    linear-gradient(to bottom, rgba(5, 5, 8, 0.6) 0%, rgba(5, 5, 8, 0.8) 50%, #050508 100%);
+}
+
+.heroBodyContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 60px 32px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroCenterBox {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(18, 18, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff334b;
+  box-shadow: 0 0 12px #ff334b;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.heroTitle {
+  font-size: clamp(2.6rem, 5.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  text-align: center;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+}
+
+.redText {
+  color: #ff334b;
+  text-shadow: 0 0 25px rgba(255, 51, 75, 0.5);
+}
+
+.heroDescription {
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.8;
+  color: #d4d4d8;
+  text-align: center;
+  max-width: 780px;
+  font-weight: 400;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── Grow Digitally Section ─────────────────────────────────── */
+.growSection {
+  width: 100%;
+  margin-top: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.growLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  position: relative;
+  text-align: center;
+}
+
+.growLabel::before,
+.growLabel::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.growLabel::before {
+  right: calc(100% + 16px);
+}
+
+.growLabel::after {
+  left: calc(100% + 16px);
+}
+
+.growGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.growCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.growCard:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 51, 75, 0.35);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 51, 75, 0.08);
+}
+
+.growIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 51, 75, 0.12);
+  border: 1px solid rgba(255, 51, 75, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff334b;
+  flex-shrink: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.growCard:hover .growIcon {
+  background: rgba(255, 51, 75, 0.2);
+  box-shadow: 0 0 20px rgba(255, 51, 75, 0.25);
+}
+
+.growCardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.growCardDesc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(212, 212, 216, 0.75);
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .growGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBodyContainer {
+    padding: 40px 20px 60px;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttonContainer > * {
+    width: 100%;
+  }
+
+  .growGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .growLabel::before,
+  .growLabel::after {
+    width: 30px;
+  }
+}
