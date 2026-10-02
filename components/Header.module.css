@@ -41,6 +41,13 @@
   flex-shrink: 0;
 }
 
+.logoImg {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .logoBox {
   width: 34px;
   height: 34px;
@@ -320,6 +327,37 @@
 .drawerFooter {
   padding: 20px 24px 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Social row inside drawer */
+.drawerSocials {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.drawerSocialBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.2s ease;
+}
+
+.drawerSocialBtn:hover {
+  background: rgba(255, 51, 75, 0.12);
+  border-color: rgba(255, 51, 75, 0.35);
+  color: #ff334b;
+  transform: translateY(-2px);
 }
 
 .drawerCta {
@@ -343,6 +381,7 @@
   opacity: 0.9;
   transform: translateY(-1px);
 }
+
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 860px) {

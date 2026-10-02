@@ -1,0 +1,715 @@
+/* ── Page Wrapper ───────────────────────────────────────────── */
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #050508;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: 72px;
+}
+
+/* ── Shared Utilities ───────────────────────────────────────── */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff334b;
+  padding: 6px 18px;
+  border-radius: 100px;
+  background: rgba(255, 51, 75, 0.1);
+  border: 1px solid rgba(255, 51, 75, 0.25);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.highlight {
+  color: #ff334b;
+  text-shadow: 0 0 30px rgba(255, 51, 75, 0.45);
+}
+
+.bodyText {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(212, 212, 216, 0.68);
+  margin: 0;
+}
+
+.standardInner {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 96px 32px 112px;
+}
+
+/* ── 1. Hero ────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 108px 32px 120px;
+  text-align: center;
+}
+
+.heroGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 860px;
+  height: 520px;
+  background: radial-gradient(ellipse at top, rgba(255, 51, 75, 0.13) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.heroSub {
+  font-size: 1.1rem;
+  line-height: 1.78;
+  color: rgba(212, 212, 216, 0.65);
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ── 2. Who We Are ──────────────────────────────────────────── */
+.whoWeAre {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 3. Our Story ───────────────────────────────────────────── */
+.story {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.storyGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(255, 51, 75, 0.055) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.story .standardInner {
+  position: relative;
+  z-index: 1;
+}
+
+.storyCentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.storyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+/* ── 4. Founders ────────────────────────────────────────────── */
+.founders {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.foundersHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.foundersGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.founderCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.founderCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 51, 75, 0.2);
+}
+
+.founderTag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff334b;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(255, 51, 75, 0.1);
+  border: 1px solid rgba(255, 51, 75, 0.2);
+  width: fit-content;
+}
+
+.founderName {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin: 0;
+  line-height: 1;
+}
+
+.founderRole {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.founderDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 4px 0;
+}
+
+.founderTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+/* ── 5. What We Do ──────────────────────────────────────────── */
+.whatWeDo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.whatWeDoGlow {
+  position: absolute;
+  top: 0;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse at top right, rgba(255, 51, 75, 0.05) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.whatWeDo .standardInner {
+  position: relative;
+  z-index: 1;
+}
+
+.whatWeDoHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.headSub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(212, 212, 216, 0.6);
+  margin: 0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.serviceCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+}
+
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 51, 75, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 51, 75, 0.22);
+}
+
+.serviceCard:hover::before {
+  opacity: 1;
+}
+
+.serviceTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.serviceDesc {
+  font-size: 0.875rem;
+  line-height: 1.72;
+  color: rgba(212, 212, 216, 0.6);
+  margin: 0;
+}
+
+/* ── 6. Approach ────────────────────────────────────────────── */
+.approach {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.approachHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.approachGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.approachCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.approachCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 51, 75, 0.24);
+}
+
+.approachNum {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: rgba(255, 51, 75, 0.12);
+  line-height: 1;
+  letter-spacing: -2px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.approachCard:hover .approachNum {
+  color: rgba(255, 51, 75, 0.22);
+}
+
+.approachTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.approachDesc {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(212, 212, 216, 0.62);
+  margin: 0;
+}
+
+/* ── 7. Vision ──────────────────────────────────────────────── */
+.vision {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.visionGlow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at bottom, rgba(255, 51, 75, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vision .standardInner {
+  position: relative;
+  z-index: 1;
+}
+
+.visionCentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.visionText {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(212, 212, 216, 0.68);
+  margin: 0;
+  text-align: left;
+}
+
+/* ── 8. Why OsonTech ────────────────────────────────────────── */
+.why {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.whyHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.whyCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 28px 26px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.whyCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 51, 75, 0.2);
+}
+
+.whyDot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: #ff334b;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(255, 51, 75, 0.5);
+}
+
+.whyTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.2px;
+}
+
+.whyDesc {
+  font-size: 0.875rem;
+  line-height: 1.72;
+  color: rgba(212, 212, 216, 0.62);
+  margin: 0;
+}
+
+/* ── 9. CTA ─────────────────────────────────────────────────── */
+.cta {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctaGlow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at bottom, rgba(255, 51, 75, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 104px 32px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.ctaSub {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: rgba(212, 212, 216, 0.65);
+  margin: 0;
+  max-width: 560px;
+}
+
+.ctaBtns {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.ctaBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  background: #ff334b;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.22s ease, transform 0.2s ease, box-shadow 0.22s ease;
+  box-shadow: 0 4px 24px rgba(255, 51, 75, 0.4);
+  white-space: nowrap;
+}
+
+.ctaBtnPrimary:hover {
+  background: #e8002a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(255, 51, 75, 0.55);
+}
+
+.ctaBtnPrimary:active {
+  transform: translateY(0);
+}
+
+.ctaBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.ctaBtnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.ctaBtnSecondary:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .approachGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sectionHead {
+    position: static;
+  }
+
+  .foundersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .standardInner {
+    padding: 72px 24px 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 80px 20px 88px;
+  }
+
+  .standardInner {
+    padding: 64px 20px 72px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .approachGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaInner {
+    padding: 72px 20px 88px;
+  }
+
+  .founderCard {
+    padding: 32px 24px;
+  }
+}
