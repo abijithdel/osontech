@@ -4,37 +4,33 @@ const navLinks = [
   {
     heading: "Services",
     links: [
-      { label: "Web Development", href: "#services" },
-      { label: "Digital Marketing", href: "#services" },
-      { label: "Meta & Google Ads", href: "#services" },
-      { label: "Custom Software", href: "#services" },
-      { label: "AI Integration", href: "#services" },
-      { label: "Bots & Automation", href: "#services" },
+      { label: "Web Development", href: "/#services" },
+      { label: "Digital Marketing", href: "/#services" },
+      { label: "Meta & Google Ads", href: "/#services" },
+      { label: "Custom Software", href: "/#services" },
+      { label: "AI Integration", href: "/#services" },
+      { label: "Bots & Automation", href: "/#services" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "Why OsonTech", href: "#why-us" },
-      { label: "Our Work", href: "#portfolio" },
-      { label: "Tech Stack", href: "#tech-stack" },
-      { label: "Careers", href: "#careers" },
-      { label: "Blog", href: "#blog" },
+      { label: "About Us", href: "/about" },
+      { label: "Why OsonTech", href: "/#why-us" },
+      { label: "Tech Stack", href: "/#tech-stack" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
-    heading: "Support",
+    heading: "Contact",
     links: [
-      { label: "Contact Us", href: "#contact" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of Service", href: "#terms" },
-      { label: "Cookie Policy", href: "#cookies" },
-      { label: "Sitemap", href: "#sitemap" },
+      { label: "Contact Us", href: "/#contact" },
+      { label: "Email Us", href: "mailto:hello@osontech.in" },
+      { label: "WhatsApp", href: "https://wa.me/9074111715" },
     ],
   },
 ];
+
 
 const socials = [
   {
@@ -85,11 +81,11 @@ const socials = [
 ];
 
 const metaLinks = [
-  { label: "Privacy Policy", href: "#privacy" },
-  { label: "Terms of Service", href: "#terms" },
-  { label: "Cookie Policy", href: "#cookies" },
-  { label: "Sitemap", href: "#sitemap" },
+  { label: "About OsonTech", href: "/about" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Sitemap", href: "/sitemap.xml" },
 ];
+
 
 export default function Footer() {
   const year = new Date().getFullYear();

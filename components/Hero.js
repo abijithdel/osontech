@@ -9,7 +9,7 @@ export default function Hero() {
       <div className={styles.heroBgWrapper}>
         <Image
           src="/hero-bg.jpg"
-          alt="Developer working on laptop in cafe dark ambience background"
+          alt="Digital marketing and web development team working at OsonTech agency in Calicut, Kerala"
           fill
           priority
           sizes="100vw"
@@ -24,16 +24,15 @@ export default function Hero() {
 
           {/* Main Title with Highlights */}
           <h1 className={styles.heroTitle}>
-            Digital <span className={styles.redText}>Solutions</span> That Move Your{" "}
-            <span className={styles.redText}>Business</span> Forward
+            Digital <span className={styles.redText}>Marketing</span> &amp; Web{" "}
+            <span className={styles.redText}>Development</span> Agency in Calicut
           </h1>
 
           {/* Description */}
           <p className={styles.heroDescription}>
-            OsonTech is a digital solutions agency helping businesses grow through
-            modern websites, digital marketing, custom software, AI integration,
-            and automation. We combine creative strategy with powerful technology to
-            build solutions that deliver real business results.
+            OsonTech is a full-service digital agency based in Calicut (Kozhikode), Kerala,
+            helping businesses grow through modern websites, SEO, Google Ads, social media
+            marketing, custom software, AI integration, and automation.
           </p>
 
           {/* Action Buttons using modular Button component */}

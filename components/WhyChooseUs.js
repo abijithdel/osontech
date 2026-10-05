@@ -101,8 +101,8 @@ export default function WhyChooseUs() {
             <span className={styles.highlight}>OsonTech?</span>
           </h2>
           <p className={styles.subtitle}>
-            We're not just another agency. We're a dedicated digital partner obsessed with helping
-            your business grow through strategy, technology, and relentless execution.
+            We're not just another agency. We're a dedicated digital partner in Calicut, Kerala,
+            obsessed with helping your business grow through strategy, technology, and relentless execution.
           </p>
         </div>
 

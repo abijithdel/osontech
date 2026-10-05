@@ -166,8 +166,8 @@ export default function Services() {
           Our <span className={styles.highlight}>Services</span>
         </h2>
         <p className={styles.sectionSubtitle}>
-          A full suite of digital services to help your business grow — from marketing and ads to
-          custom software and AI.
+          A full suite of digital services for businesses in Calicut and across Kerala — from
+          marketing, SEO and ads to custom websites, software and AI.
         </p>
       </div>
 

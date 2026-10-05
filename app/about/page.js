@@ -2,11 +2,74 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
+const BASE_URL = "https://www.osontech.in";
+
 export const metadata = {
-  title: "About Us | OsonTech",
+  title: "About OsonTech – Digital Marketing & Web Development Agency in Calicut",
   description:
-    "OsonTech is a digital solutions agency built by two friends — Abijith and Alan. We help businesses grow through web development, digital marketing, AI, automation, and more.",
+    "Learn about OsonTech, a digital marketing and web development agency in Calicut, Kerala, founded by Abijith and Alan. We help businesses grow through SEO, web development, Google Ads, social media marketing, and AI solutions.",
+  alternates: {
+    canonical: `${BASE_URL}/about`,
+  },
+  openGraph: {
+    title: "About OsonTech – Digital Marketing & Web Development Agency in Calicut",
+    description:
+      "Learn about OsonTech, a digital marketing and web development agency in Calicut, Kerala, founded by Abijith and Alan. We help businesses grow through SEO, web development, Google Ads, social media marketing, and AI solutions.",
+    url: `${BASE_URL}/about`,
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/logo.png`,
+        width: 800,
+        height: 600,
+        alt: "OsonTech – Digital Marketing & Web Development Agency in Calicut, Kerala",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About OsonTech – Digital Marketing & Web Development Agency in Calicut",
+    description:
+      "Learn about OsonTech, a digital marketing and web development agency in Calicut, Kerala, founded by Abijith and Alan.",
+    images: [`${BASE_URL}/logo.png`],
+  },
 };
+
+/** JSON-LD structured data for About page */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `${BASE_URL}/about#webpage`,
+      url: `${BASE_URL}/about`,
+      name: "About OsonTech – Digital Marketing & Web Development Agency in Calicut",
+      description:
+        "OsonTech is a digital marketing and web development agency in Calicut, Kerala, founded by Abijith and Alan.",
+      isPartOf: { "@id": `${BASE_URL}/#website` },
+      about: { "@id": `${BASE_URL}/#organization` },
+      inLanguage: "en-IN",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: BASE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About Us",
+          item: `${BASE_URL}/about`,
+        },
+      ],
+    },
+  ],
+};
+
 
 /* ── Data ────────────────────────────────────────────────────── */
 
@@ -111,28 +174,33 @@ const whyPoints = [
 
 export default function AboutPage() {
   return (
-    <div className={styles.pageWrapper}>
-      <Header />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles.pageWrapper}>
+        <Header />
 
-      <main className={styles.main}>
+        <main className={styles.main}>
 
-        {/* ── 1. Hero ── */}
-        <section className={styles.hero}>
-          <div className={styles.heroGlow} aria-hidden="true" />
-          <div className={styles.heroInner}>
-            <span className={styles.eyebrow}>About OsonTech</span>
-            <h1 className={styles.heroTitle}>
-              Two Friends.{" "}
-              <span className={styles.highlight}>One Vision.</span>
-            </h1>
-            <p className={styles.heroSub}>
-              OsonTech is a digital solutions agency built by Abijith and Alan —
-              two people who decided to stop waiting and start building. We help
-              businesses grow online through web development, digital marketing,
-              AI, automation, and everything in between.
-            </p>
-          </div>
-        </section>
+          {/* ── 1. Hero ── */}
+          <section className={styles.hero}>
+            <div className={styles.heroGlow} aria-hidden="true" />
+            <div className={styles.heroInner}>
+              <span className={styles.eyebrow}>About OsonTech</span>
+              <h1 className={styles.heroTitle}>
+                Digital Agency in Calicut,{" "}
+                <span className={styles.highlight}>Built With Purpose.</span>
+              </h1>
+              <p className={styles.heroSub}>
+                OsonTech is a digital marketing and web development agency based in Calicut (Kozhikode), Kerala,
+                built by Abijith and Alan — two people who decided to stop waiting and start building. We help
+                businesses grow online through web development, digital marketing,
+                AI, automation, and everything in between.
+              </p>
+            </div>
+          </section>
 
         {/* ── 2. Who We Are ── */}
         <section className={styles.whoWeAre}>
@@ -418,5 +486,6 @@ export default function AboutPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

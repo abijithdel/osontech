@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./Header.module.css";
 
 const navLinks = [
@@ -84,8 +85,8 @@ export default function Header() {
         <div className={styles.inner}>
 
           {/* Logo */}
-          <a href="/" className={styles.logo} onClick={closeMenu}>
-            <img src="/logo.png" alt="OsonTech Logo" className={styles.logoImg} />
+          <a href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech – Digital Marketing & Web Development Agency in Calicut">
+            <Image src="/logo.png" alt="OsonTech logo – Digital Marketing & Web Development Agency in Calicut, Kerala" className={styles.logoImg} width={140} height={40} priority />
           </a>
 
           {/* Desktop Nav */}
@@ -140,8 +141,8 @@ export default function Header() {
         aria-label="Mobile navigation"
       >
         <div className={styles.drawerHeader}>
-          <a href="/" className={styles.logo} onClick={closeMenu}>
-            <img src="/logo.png" alt="OsonTech Logo" className={styles.logoImg} />
+          <a href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech Home">
+            <Image src="/logo.png" alt="OsonTech logo" className={styles.logoImg} width={140} height={40} />
           </a>
           <button className={styles.closeBtn} onClick={closeMenu} aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
