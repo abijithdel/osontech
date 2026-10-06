@@ -1,3 +1,20 @@
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.12); }
+}
+
 /* ── Services Section ──────────────────────────────────────── */
 .servicesSection {
   width: 100%;
@@ -71,6 +88,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  /* entry animation initial state — JS adds .cardVisible to trigger */
+  opacity: 0;
+  transform: translateY(28px);
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   cursor: default;
@@ -166,6 +186,31 @@
 .serviceCard:hover .cardArrow {
   color: #ff334b;
   transform: translateX(3px);
+}
+
+/* ── Scroll-triggered Animations ───────────────────────────── */
+
+/* Header: starts hidden, transitions in when .headerVisible is added */
+.headerAnimate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.headerVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards: animate in when .cardVisible is added by IntersectionObserver */
+.cardVisible {
+  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Icon subtle pulse on card hover */
+.serviceCard:hover .iconBox svg {
+  animation: iconPulse 0.55s ease-in-out;
 }
 
 /* ── Responsive ────────────────────────────────────────────── */

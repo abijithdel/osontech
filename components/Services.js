@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import styles from "./Services.module.css";
 
 const services = [
@@ -111,6 +114,21 @@ const services = [
     tag: "Software",
   },
   {
+    id: "app-dev",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
+        <path d="M9 6h6" />
+        <rect x="2" y="7" width="5" height="4" rx="1" />
+        <rect x="17" y="7" width="5" height="4" rx="1" />
+      </svg>
+    ),
+    title: "App Dev (Mobile & Des)",
+    desc: "Native and cross-platform apps for iOS, Android & desktop — built with Flutter or React Native for a seamless user experience.",
+    tag: "Mobile · Desktop",
+  },
+  {
     id: "bots",
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -157,10 +175,53 @@ const services = [
 ];
 
 export default function Services() {
+  const gridRef = useRef(null);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    // Animate section header on scroll
+    const headerEl = headerRef.current;
+    if (headerEl) {
+      const headerObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            headerEl.classList.add(styles.headerVisible);
+            headerObserver.unobserve(headerEl);
+          }
+        },
+        { threshold: 0.2 }
+      );
+      headerObserver.observe(headerEl);
+    }
+
+    // Stagger-animate each card on scroll
+    const cards = gridRef.current?.querySelectorAll(`.${styles.serviceCard}`);
+    if (!cards) return;
+
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.cardVisible);
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    cards.forEach((card, i) => {
+      card.style.setProperty("--delay", `${i * 60}ms`);
+      cardObserver.observe(card);
+    });
+
+    return () => cardObserver.disconnect();
+  }, []);
+
   return (
     <section id="services" className={styles.servicesSection}>
       {/* Section Header */}
-      <div className={styles.sectionHeader}>
+      <div ref={headerRef} className={`${styles.sectionHeader} ${styles.headerAnimate}`}>
         <span className={styles.sectionEyebrow}>What We Offer</span>
         <h2 className={styles.sectionTitle}>
           Our <span className={styles.highlight}>Services</span>
@@ -172,7 +233,7 @@ export default function Services() {
       </div>
 
       {/* Services Grid */}
-      <div className={styles.servicesGrid}>
+      <div ref={gridRef} className={styles.servicesGrid}>
         {services.map((service) => (
           <div key={service.id} className={styles.serviceCard}>
             <div className={styles.cardTop}>
