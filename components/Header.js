@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 const navLinks = [
+  { label: "Home",       href: "/" },
   { label: "About",      href: "/about" },
   { label: "Services",   href: "/#services" },
   { label: "Why Us",     href: "/#why-us" },
@@ -85,18 +87,18 @@ export default function Header() {
         <div className={styles.inner}>
 
           {/* Logo */}
-          <a href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech – Digital Marketing & Web Development Agency in Calicut">
+          <Link href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech – Digital Marketing & Web Development Agency in Calicut">
             <Image src="/logo.png" alt="OsonTech logo – Digital Marketing & Web Development Agency in Calicut, Kerala" className={styles.logoImg} width={140} height={40} priority />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className={styles.desktopNav} aria-label="Main navigation">
             <ul className={styles.navList}>
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className={styles.navLink}>
+                  <Link href={link.href} className={styles.navLink}>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -104,13 +106,13 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className={styles.desktopCta}>
-            <a href="/#contact" className={styles.ctaBtn}>
+            <Link href="/#contact" className={styles.ctaBtn}>
               Get Started
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Hamburger */}
@@ -141,9 +143,9 @@ export default function Header() {
         aria-label="Mobile navigation"
       >
         <div className={styles.drawerHeader}>
-          <a href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech Home">
+          <Link href="/" className={styles.logo} onClick={closeMenu} aria-label="OsonTech Home">
             <Image src="/logo.png" alt="OsonTech logo" className={styles.logoImg} width={140} height={40} />
-          </a>
+          </Link>
           <button className={styles.closeBtn} onClick={closeMenu} aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -159,14 +161,14 @@ export default function Header() {
               className={styles.drawerItem}
               style={{ animationDelay: `${i * 55}ms` }}
             >
-              <a href={link.href} className={styles.drawerLink} onClick={closeMenu}>
+              <Link href={link.href} className={styles.drawerLink} onClick={closeMenu}>
                 <span className={styles.drawerNum}>{String(i + 1).padStart(2, "0")}</span>
                 {link.label}
                 <svg className={styles.drawerArrow} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -188,13 +190,13 @@ export default function Header() {
             ))}
           </div>
 
-          <a href="/#contact" className={styles.drawerCta} onClick={closeMenu}>
+          <Link href="/#contact" className={styles.drawerCta} onClick={closeMenu}>
             Get Started — It's Free
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
-          </a>
+          </Link>
         </div>
       </nav>
     </>
