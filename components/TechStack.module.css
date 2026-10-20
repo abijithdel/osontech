@@ -1,3 +1,16 @@
+/* ── Scroll Reveal ──────────────────────────────────────────── */
+.revealUp {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ── Section Shell ─────────────────────────────────────────── */
 .section {
   position: relative;
@@ -83,17 +96,6 @@
 }
 
 /* ── Tech Card ─────────────────────────────────────────────── */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 .techCard {
   position: relative;
   display: flex;
@@ -107,8 +109,11 @@
   border-radius: 18px;
   cursor: default;
   overflow: hidden;
-  animation: fadeSlideUp 0.4s ease both;
-  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              background 0.28s ease,
+              border-color 0.28s ease,
+              box-shadow 0.28s ease;
 }
 
 .techCard::before {
@@ -123,8 +128,9 @@
   filter: blur(8px);
 }
 
-.techCard:hover {
-  transform: translateY(-5px) scale(1.04);
+.techCard:hover,
+.techCard.revealVisible:hover {
+  transform: translateY(-5px) scale(1.04) !important;
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);

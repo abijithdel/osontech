@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./FAQ.module.css";
 
 const faqs = [
@@ -44,8 +44,52 @@ const faqs = [
 
 export default function FAQ() {
   const [openId, setOpenId] = useState(null);
+  const headerRef = useRef(null);
+  const accordionRef = useRef(null);
 
   const toggle = (id) => setOpenId((prev) => (prev === id ? null : id));
+
+  useEffect(() => {
+    const observers = [];
+
+    // Header
+    if (headerRef.current) {
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            headerRef.current.classList.add(styles.revealVisible);
+            io.unobserve(headerRef.current);
+          }
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
+      );
+      io.observe(headerRef.current);
+      observers.push(io);
+    }
+
+    // Accordion items – staggered
+    const items = accordionRef.current?.querySelectorAll(`.${styles.item}`);
+    if (items) {
+      const itemIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(styles.revealVisible);
+              itemIO.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+      );
+      items.forEach((item, i) => {
+        item.style.setProperty("--reveal-delay", `${i * 80}ms`);
+        itemIO.observe(item);
+      });
+      observers.push(itemIO);
+    }
+
+    return () => observers.forEach((io) => io.disconnect());
+  }, []);
 
   return (
     <section id="faq" className={styles.section}>
@@ -53,7 +97,7 @@ export default function FAQ() {
 
       <div className={styles.inner}>
         {/* Header */}
-        <div className={styles.header}>
+        <div ref={headerRef} className={`${styles.header} ${styles.revealUp}`}>
           <span className={styles.eyebrow}>Got Questions?</span>
           <h2 className={styles.title}>
             Frequently Asked <span className={styles.highlight}>Questions</span>
@@ -68,13 +112,13 @@ export default function FAQ() {
         </div>
 
         {/* Accordion */}
-        <div className={styles.accordion}>
+        <div ref={accordionRef} className={styles.accordion}>
           {faqs.map((faq, index) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className={`${styles.item} ${isOpen ? styles.itemOpen : ""}`}
+                className={`${styles.item} ${styles.revealUp} ${isOpen ? styles.itemOpen : ""}`}
               >
                 <button
                   className={styles.question}

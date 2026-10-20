@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useEffect } from "react";
 import styles from "./WhyChooseUs.module.css";
 
 const reasons = [
@@ -87,6 +90,59 @@ const stats = [
 ];
 
 export default function WhyChooseUs() {
+  const headerRef = useRef(null);
+  const gridRef = useRef(null);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observers = [];
+
+    // Helper: observe a single element with a class toggle
+    const observe = (el, cls, opts = {}) => {
+      if (!el) return;
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.classList.add(cls);
+            io.unobserve(el);
+          }
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -30px 0px", ...opts }
+      );
+      io.observe(el);
+      observers.push(io);
+    };
+
+    // Header
+    observe(headerRef.current, styles.revealVisible);
+
+    // Cards – staggered
+    const cards = gridRef.current?.querySelectorAll(`.${styles.card}`);
+    if (cards) {
+      const cardIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(styles.revealVisible);
+              cardIO.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      );
+      cards.forEach((card, i) => {
+        card.style.setProperty("--reveal-delay", `${i * 65}ms`);
+        cardIO.observe(card);
+      });
+      observers.push(cardIO);
+    }
+
+    // Stats strip
+    observe(statsRef.current, styles.revealVisible, { threshold: 0.2 });
+
+    return () => observers.forEach((io) => io.disconnect());
+  }, []);
+
   return (
     <section id="why-us" className={styles.section}>
       {/* Background glow */}
@@ -94,7 +150,7 @@ export default function WhyChooseUs() {
 
       <div className={styles.inner}>
         {/* Header */}
-        <div className={styles.header}>
+        <div ref={headerRef} className={`${styles.header} ${styles.revealUp}`}>
           <span className={styles.eyebrow}>Why OsonTech</span>
           <h2 className={styles.title}>
             Why Choose{" "}
@@ -107,9 +163,9 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Reasons Grid */}
-        <div className={styles.grid}>
+        <div ref={gridRef} className={styles.grid}>
           {reasons.map((r) => (
-            <div key={r.id} className={styles.card}>
+            <div key={r.id} className={`${styles.card} ${styles.revealUp}`}>
               <div className={styles.cardHeader}>
                 <div className={styles.iconBox}>{r.icon}</div>
                 <span className={styles.number}>{r.number}</span>
@@ -121,7 +177,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Stats Strip */}
-        <div className={styles.statsStrip}>
+        <div ref={statsRef} className={`${styles.statsStrip} ${styles.revealUp}`}>
           {stats.map((s) => (
             <div key={s.label} className={styles.statItem}>
               <span className={styles.statValue}>{s.value}</span>

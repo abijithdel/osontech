@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./TechStack.module.css";
 
 const INITIAL_SHOW = 10;
@@ -66,9 +66,54 @@ const allTechs = [
 
 export default function TechStack() {
   const [showAll, setShowAll] = useState(false);
+  const headerRef = useRef(null);
+  const gridRef = useRef(null);
 
   const visibleTechs = showAll ? allTechs : allTechs.slice(0, INITIAL_SHOW);
   const hiddenCount = allTechs.length - INITIAL_SHOW;
+
+  useEffect(() => {
+    const observers = [];
+
+    // Header
+    if (headerRef.current) {
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            headerRef.current.classList.add(styles.revealVisible);
+            io.unobserve(headerRef.current);
+          }
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
+      );
+      io.observe(headerRef.current);
+      observers.push(io);
+    }
+
+    // Cards — staggered
+    const cards = gridRef.current?.querySelectorAll(`.${styles.techCard}`);
+    if (cards) {
+      const cardIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(styles.revealVisible);
+              cardIO.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
+      );
+      cards.forEach((card, i) => {
+        card.style.setProperty("--reveal-delay", `${i * 40}ms`);
+        cardIO.observe(card);
+      });
+      observers.push(cardIO);
+    }
+
+    return () => observers.forEach((io) => io.disconnect());
+  // Re-run when showAll changes so newly rendered cards get observed
+  }, [showAll]);
 
   return (
     <section id="tech-stack" className={styles.section}>
@@ -76,7 +121,7 @@ export default function TechStack() {
 
       <div className={styles.inner}>
         {/* Header */}
-        <div className={styles.header}>
+        <div ref={headerRef} className={`${styles.header} ${styles.revealUp}`}>
           <span className={styles.eyebrow}>Built With The Best</span>
           <h2 className={styles.title}>
             Our Technology <span className={styles.highlight}>Stack</span>
@@ -88,12 +133,11 @@ export default function TechStack() {
         </div>
 
         {/* Grid */}
-        <div className={styles.techGrid}>
+        <div ref={gridRef} className={styles.techGrid}>
           {visibleTechs.map((tech, i) => (
             <div
               key={tech.name}
-              className={styles.techCard}
-              style={{ animationDelay: `${i * 30}ms` }}
+              className={`${styles.techCard} ${styles.revealUp}`}
             >
               <span
                 className={styles.techIcon}
