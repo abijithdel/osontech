@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styles from "./FAQ.module.css";
 
 const faqs = [
@@ -44,52 +44,8 @@ const faqs = [
 
 export default function FAQ() {
   const [openId, setOpenId] = useState(null);
-  const headerRef = useRef(null);
-  const accordionRef = useRef(null);
 
   const toggle = (id) => setOpenId((prev) => (prev === id ? null : id));
-
-  useEffect(() => {
-    const observers = [];
-
-    // Header
-    if (headerRef.current) {
-      const io = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            headerRef.current.classList.add(styles.revealVisible);
-            io.unobserve(headerRef.current);
-          }
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
-      );
-      io.observe(headerRef.current);
-      observers.push(io);
-    }
-
-    // Accordion items – staggered
-    const items = accordionRef.current?.querySelectorAll(`.${styles.item}`);
-    if (items) {
-      const itemIO = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add(styles.revealVisible);
-              itemIO.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
-      );
-      items.forEach((item, i) => {
-        item.style.setProperty("--reveal-delay", `${i * 80}ms`);
-        itemIO.observe(item);
-      });
-      observers.push(itemIO);
-    }
-
-    return () => observers.forEach((io) => io.disconnect());
-  }, []);
 
   return (
     <section id="faq" className={styles.section}>
@@ -97,14 +53,14 @@ export default function FAQ() {
 
       <div className={styles.inner}>
         {/* Header */}
-        <div ref={headerRef} className={`${styles.header} ${styles.revealUp}`}>
+        <div className={styles.header}>
           <span className={styles.eyebrow}>Got Questions?</span>
           <h2 className={styles.title}>
             Frequently Asked <span className={styles.highlight}>Questions</span>
           </h2>
           <p className={styles.subtitle}>
             Everything you need to know about working with OsonTech.
-            Can't find your answer?{" "}
+            Can&apos;t find your answer?{" "}
             <a href="#contact" className={styles.contactLink}>
               Just ask us directly →
             </a>
@@ -112,23 +68,21 @@ export default function FAQ() {
         </div>
 
         {/* Accordion */}
-        <div ref={accordionRef} className={styles.accordion}>
-          {faqs.map((faq, index) => {
+        <div className={styles.accordion}>
+          {faqs.map((faq) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className={`${styles.item} ${styles.revealUp} ${isOpen ? styles.itemOpen : ""}`}
+                className={`${styles.item} ${isOpen ? styles.itemOpen : ""}`}
               >
                 <button
                   className={styles.question}
                   onClick={() => toggle(faq.id)}
                   aria-expanded={isOpen}
-                  aria-controls={faq.id}
+                  aria-controls={`answer-${faq.id}`}
+                  type="button"
                 >
-                  <span className={styles.questionNumber}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <span className={styles.questionText}>{faq.question}</span>
                   <span className={styles.chevron} aria-hidden="true">
                     <svg
@@ -145,12 +99,11 @@ export default function FAQ() {
                 </button>
 
                 <div
-                  id={faq.id}
+                  id={`answer-${faq.id}`}
                   className={styles.answerWrapper}
+                  style={{ maxHeight: isOpen ? "600px" : "0px" }}
                 >
-                  <div className={styles.answerInner}>
-                    <p className={styles.answer}>{faq.answer}</p>
-                  </div>
+                  <p className={styles.answer}>{faq.answer}</p>
                 </div>
               </div>
             );
